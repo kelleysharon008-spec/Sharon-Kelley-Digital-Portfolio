@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sharon Kelley – CIS311 Digital Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Digital writing portfolio for CIS311 – Technical Writing in CIS by Sharon Kelley." />
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e0edff 0, #f5f5f7 45%, #f5f5f7 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(245, 245, 247, 0.95), rgba(245, 245, 247, 0.7));
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    }
+
+    .nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-title {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text p.lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-meta {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      color: var(--text-main);
+    }
+
+    .hero-panel {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+    }
+
+    .hero-panel h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-list li span.icon {
+      font-size: 1.1rem;
+      margin-right: 0.35rem;
+    }
+
+    .section {
+      margin-bottom: 2.75rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .unit-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .unit-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .unit-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .unit-meta {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .assignment-list {
+      margin-top: 0.4rem;
+      padding-left: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .assignment-list li {
+      margin-bottom: 0.2rem;
+    }
+
+    .assignment-list a {
+      font-weight: 500;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: #f9fafb;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.4rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="nav-title">Sharon Kelley – Portfolio</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#units">Course Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-text">
+        <div class="tagline">CIS311 · Technical Writing in CIS</div>
+        <h1>Digital Writing Portfolio</h1>
+        <p class="lead">
+          This portfolio showcases my work as a student in
+          <strong>CIS311 – Technical Writing in CIS</strong> at Post University.
+          It highlights my skills in professional communication, ethical and inclusive writing,
+          research, summarization, and creating clear technical instructions.
+        </p>
+        <p class="hero-meta">
+          <strong>Student:</strong> Sharon Kelley<br />
+          <strong>Instructor:</strong> Dr. Jess Schwartz<br />
+          <strong>Semester:</strong> Fall 2025
+        </p>
+      </div>
+
+      <aside class="hero-panel">
+        <h2>Skills Demonstrated</h2>
+        <ul class="hero-list">
+          <li><span class="icon">✉️</span> Professional workplace messaging and email revision</li>
+          <li><span class="icon">🌐</span> Ethical and audience-aware social media analysis</li>
+          <li><span class="icon">🧠</span> Critical thinking and research topic evaluation</li>
+          <li><span class="icon">🧾</span> Clear summaries, abstracts, and reflections</li>
+          <li><span class="icon">📊</span> Data reporting and visual analysis</li>
+          <li><span class="icon">🛠️</span> User-focused technical instructions and troubleshooting steps</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Units Overview -->
+    <section class="section" id="units">
+      <div class="section-header">
+        <h2 class="section-title">Course Work Overview</h2>
+        <p class="section-subtitle">
+          Each unit focuses on a different area of technical and professional communication.
+          The assignments listed below have been revised for clarity, grammar, and professional tone.
+          Click “View assignment” to see the full document.
+        </p>
+      </div>
+
+      <div class="units-grid">
+        <!-- Unit 1 -->
+        <article class="unit-card">
+          <div class="unit-label">Unit 1</div>
+          <h3>Workplace Communication & Inclusive Language</h3>
+          <p class="unit-meta">
+            Focus: Workplace messaging tools and removing bias from business communication.
+          </p>
+          <ul class="assignment-list">
+            <li>
+              <strong>The Power of Workplace Messaging</strong><br />
+              <a href="Unit1/Power_of_Workplace_Messaging.md" target="_blank">View assignment</a>
+            </li>
+            <li>
+              <strong>Removing the ISM from Business Writing</strong><br />
+              <a href="Unit1/Removing_ISM_from_Business_Writing.md" target="_blank">View assignment</a>
+            </li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Workplace tools</span>
+            <span class="pill">Hybrid work</span>
+            <span class="pill">Inclusive language</span>
+          </div>
+        </article>
+
+        <!-- Unit 2 -->
+        <article class="unit-card">
+          <div class="unit-label">Unit 2</div>
+          <h3>Professional Messages & Social Media Ethics</h3>
+          <p class="unit-meta">
+            Focus: Revising informal or problematic messages, applying the “You Attitude,” and
+            evaluating corporate social media practices.
+          </p>
+          <ul class="assignment-list">
+            <li>
+              <strong>Revising a Poorly Written Message</strong><br />
+              <a href="Unit2/Revising_Poorly_Written_Message.md" target="_blank">View assignment</a>
+            </li>
+            <li>
+              <strong>Social Media and Online Content Analysis (Starbucks)</strong><br />
+              <a href="Unit2/Social_Media_Analysis_Starbucks.md" target="_blank">View assignment</a>
+            </li>
+            <li>
+              <strong>You Attitude Assignment</strong><br />
+              <a href="Unit2/You_Attitude_Assignment.md" target="_blank">View assignment</a>
+            </li>
+            <li>
+              <strong>Research Topic Selection</strong><br />
+              <a href="Unit2/Research_Topic_Selection.md" target="_blank">View assignment</a>
+            </li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Professional tone</span>
+            <span class="pill">You Attitude</span>
+            <span class="pill">Social media</span>
+            <span class="pill">Ethics</span>
+          </div>
+        </article>
+
+        <!-- Unit 3 -->
+        <article class="unit-card">
+          <div class="unit-label">Unit 3</div>
+          <h3>Summaries & Abstracts</h3>
+          <p class="unit-meta">
+            Focus: Condensing complex technical material into clear, structured overviews.
+          </p>
+          <ul class="assignment-list">
+            <li>
+              <strong>Summary & Abstracts – Data Mining: Concepts and Techniques</strong><br />
+              <a href="Unit3/Summaries_and_Abstracts.md" target="_blank">View assignment</a>
+            </li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Summarization</span>
+            <span class="pill">Abstract writing</span>
+            <span class="pill">Technical reading</span>
+          </div>
+        </article>
+
+        <!-- Unit 4 -->
+        <article class="unit-card">
+          <div class="unit-label">Unit 4</div>
+          <h3>Data Reporting & Visualization</h3>
+          <p class="unit-meta">
+            Focus: Presenting numerical data clearly and interpreting trends across countries and years.
+          </p>
+          <ul class="assignment-list">
+            <li>
+              <strong>World Orange Production Analysis (APA 7 Report)</strong><br />
+              <a href="Unit4/World_Orange_Production_APA7_Report.md" target="_blank">View assignment</a>
+            </li>
+            <li>
+              <strong>World Orange Production Summary</strong><br />
+              <a href="Unit4/World_Orange_Production_Summary.md" target="_blank">View assignment</a>
+            </li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Data analysis</span>
+            <span class="pill">Charts & tables</span>
+            <span class="pill">Global production</span>
+          </div>
+        </article>
+
+        <!-- Unit 5 -->
+        <article class="unit-card">
+          <div class="unit-label">Unit 5</div>
+          <h3>Technical Instructions & User Testing</h3>
+          <p class="unit-meta">
+            Focus: Writing clear, step-by-step instructions and revising them based on user feedback.
+          </p>
+          <ul class="assignment-list">
+            <li>
+              <strong>How to Connect a Laptop to a Wi-Fi Network</strong><br />
+              <a href="Unit5/Technical_Instructions.md" target="_blank">View assignment</a>
+            </li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Technical writing</span>
+            <span class="pill">Usability</span>
+            <span class="pill">User testing</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact / Footer Card -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact & Course Information</h2>
+        <p class="section-subtitle">
+          This portfolio is designed to be shared with instructors, potential employers, and internship supervisors.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <p><strong>Student:</strong> Sharon Kelley</p>
+        <p><strong>Course:</strong> CIS311 – Technical Writing in CIS</p>
+        <p><strong>Institution:</strong> Post University</p>
+        <p style="margin-top: 0.75rem;">
+          <strong>GitHub Repository:</strong><br />
+          <em>(Add link here after you create the repository, e.g.</em>
+          <code>https://github.com/YOUR-USERNAME/Sharon-Kelley-Digital-Portfolio</code><em>)</em>
+        </p>
+        <p style="margin-top: 0.75rem;">
+          <strong>Intended Audience:</strong> Instructors, hiring managers, recruiters, internship coordinators,
+          and others evaluating my written communication skills in technology-focused settings.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Sharon Kelley</span>
+    <span>CIS311 – Technical Writing in CIS</span>
+  </footer>
+
+  <script>
+    // Set current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
